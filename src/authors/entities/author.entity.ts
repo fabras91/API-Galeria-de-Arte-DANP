@@ -18,7 +18,6 @@ export class Author {
   last_name: string;
 
   @Column()
-  @IsUrl()
   @IsNotEmpty()
   link_image: string;
     

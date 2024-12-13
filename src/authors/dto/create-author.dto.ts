@@ -1,7 +1,9 @@
-import { IsNumber, IsString, IsUrl } from "class-validator";
+import { IsInt, IsNumber, IsPositive, IsString, IsUrl } from "class-validator";
 
 export class CreateAuthorDto {
     @IsNumber()
+    @IsInt()
+    @IsPositive()
     id: number;
 
     @IsString()

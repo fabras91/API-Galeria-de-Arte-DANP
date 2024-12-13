@@ -3,6 +3,8 @@ import { AuthorsModule } from './authors/authors.module';
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PicturesModule } from './pictures/pictures.module';
+import { RoomsModule } from './rooms/rooms.module';
+import { GalleriesModule } from './galleries/galleries.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { PicturesModule } from './pictures/pictures.module';
     }),
     AuthorsModule,
     PicturesModule,
+    RoomsModule,
+    GalleriesModule,
   ],
   controllers: [],
   providers: [],

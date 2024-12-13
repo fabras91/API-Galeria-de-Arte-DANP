@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator";
 import { Author } from "src/authors/entities/author.entity";
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Picture {    
@@ -8,8 +8,8 @@ export class Picture {
     @IsNotEmpty()
     id: number;
 
-    @Column()
     @IsNotEmpty()
+    @Column({ name: 'author_id', nullable: true })
     author_id: number;
 
     @Column()
@@ -56,8 +56,7 @@ export class Picture {
     @IsNotEmpty()
     pos_y: number; 
     
-    @ManyToOne(() => Author, (author) => author.id, {
-        eager: true, // para que traiga las raza al hacer un findOne
-    })
+    @ManyToOne(() => Author, (author) => author.id, { eager: true })
+    @JoinColumn({ name: 'author_id'})
     author: Author;
 }
