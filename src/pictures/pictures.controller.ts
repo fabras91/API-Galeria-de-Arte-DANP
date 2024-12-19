@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { PicturesService } from './pictures.service';
 import { CreatePictureDto } from './dto/create-picture.dto';
 import { UpdatePictureDto } from './dto/update-picture.dto';
@@ -15,6 +15,11 @@ export class PicturesController {
   @Get()
   findAll() {
     return this.picturesService.findAll();
+  }
+
+  @Get('search') 
+  findByQuery(@Query('room_id') room_id: number, @Query('author_id') author_id: number) { 
+    return this.picturesService.findByQuery(room_id, author_id); 
   }
 
   @Get(':id')

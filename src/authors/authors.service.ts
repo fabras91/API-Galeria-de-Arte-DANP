@@ -18,18 +18,18 @@ export class AuthorsService {
   }
 
   async findAll() {
-    return this.authorsRepository.find();
+    return await this.authorsRepository.find();
   }
 
   async findOne(id: number) {
-    return this.authorsRepository.findBy({ id });
+    return await this.authorsRepository.findBy({ id });
   }
 
   async update(id: number, updateAuthorDto: UpdateAuthorDto) {
-    return this.authorsRepository.update(id, updateAuthorDto);
+    return await this.authorsRepository.update(id, updateAuthorDto);
   }
 
   async remove(id: number) {
-    return this.authorsRepository.delete(id);
+    return await this.authorsRepository.delete(id);
   }
 }

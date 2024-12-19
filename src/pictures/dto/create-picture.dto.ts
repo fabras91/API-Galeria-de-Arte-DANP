@@ -1,4 +1,4 @@
-import { IsInt, IsNumber, IsPositive, IsString, IsUrl } from "class-validator";
+import { IsInt, IsNumber, IsPositive, IsString } from "class-validator";
 
 export class CreatePictureDto {
     @IsNumber()
@@ -34,15 +34,12 @@ export class CreatePictureDto {
     year: number;
 
     @IsString()
-    @IsUrl()
     link_image: string;
 
     @IsString()
-    @IsUrl()
     link_qr: string;
 
     @IsString()
-    @IsUrl()
     link_audio: string;
 
     @IsNumber()

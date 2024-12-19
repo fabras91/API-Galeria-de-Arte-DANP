@@ -1,4 +1,4 @@
-import { IsInt, IsNumber, IsPositive, IsString, IsUrl } from "class-validator";
+import { IsInt, IsNumber, IsPositive, IsString } from "class-validator";
 
 export class CreateAuthorDto {
     @IsNumber()
@@ -13,6 +13,5 @@ export class CreateAuthorDto {
     last_name: string;
   
     @IsString()
-    @IsUrl()
     link_image: string;
 }

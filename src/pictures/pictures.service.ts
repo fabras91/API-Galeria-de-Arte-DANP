@@ -4,7 +4,6 @@ import { UpdatePictureDto } from './dto/update-picture.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Picture } from './entities/picture.entity';
 import { Repository } from 'typeorm';
-import { CreateAuthorDto } from 'src/authors/dto/create-author.dto';
 
 @Injectable()
 export class PicturesService {
@@ -18,19 +17,25 @@ export class PicturesService {
     return await this.pictureRepository.save(picture);
   }
 
-  findAll() {
-    return `This action returns all pictures`;
+  async findAll() {
+    return await this.pictureRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} picture`;
+  async findOne(id: number) {
+    return await this.pictureRepository.findBy({ id });
   }
 
-  update(id: number, updatePictureDto: UpdatePictureDto) {
+  async findByQuery(room_id: number, author_id: number) { 
+    return await this.pictureRepository.find({ 
+      where: { room_id, author_id }, 
+    }); 
+  }
+
+  async update(id: number, updatePictureDto: UpdatePictureDto) {
     return `This action updates a #${id} picture`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} picture`;
   }
 }
