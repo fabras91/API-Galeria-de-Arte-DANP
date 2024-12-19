@@ -25,10 +25,15 @@ export class PicturesService {
     return await this.pictureRepository.findBy({ id });
   }
 
-  async findByQuery(room_id: number, author_id: number) { 
-    return await this.pictureRepository.find({ 
-      where: { room_id, author_id }, 
-    }); 
+  async findByQuery(room_id?: number, author_id?: number) {
+    const query = this.pictureRepository.createQueryBuilder('picture');
+    if (room_id) {
+      query.andWhere('picture.room_id = :room_id', { room_id });
+    }
+    if (author_id) {
+      query.andWhere('picture.author_id = :author_id', { author_id });
+    }
+    return await query.getMany();
   }
 
   async update(id: number, updatePictureDto: UpdatePictureDto) {

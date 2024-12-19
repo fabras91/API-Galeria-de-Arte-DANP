@@ -17,9 +17,9 @@ export class PicturesController {
     return this.picturesService.findAll();
   }
 
-  @Get('search') 
-  findByQuery(@Query('room_id') room_id: number, @Query('author_id') author_id: number) { 
-    return this.picturesService.findByQuery(room_id, author_id); 
+  @Get('search')
+  findByQuery(@Query('room_id') room_id: number, @Query('author_id') author_id: number) {
+    return this.picturesService.findByQuery(room_id, author_id);
   }
 
   @Get(':id')
